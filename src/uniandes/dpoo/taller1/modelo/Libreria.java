@@ -159,7 +159,22 @@ public class Libreria
 			{
 				laCategoria = new Categoria(nombreCategoria,false);
 				Categoria[] categoriasNuevas= {laCategoria};
-				categorias.addAll(categoriasNuevas);
+				int tam = categoriasNuevas.length+categorias.length;
+				Categoria[] nuevasNuevasCategorias = new Categoria[tam]; 
+				int i;
+				for (i=0;i<categoriasNuevas.length;i++)
+				{
+					Categoria act = categoriasNuevas[i];
+					nuevasNuevasCategorias[i] = act;
+				}
+				for (i=0;i<categorias.length;i++)
+				{
+					Categoria act = categorias[i];
+					int j = categoriasNuevas.length+i;
+					nuevasNuevasCategorias[j] = act;
+				}
+				this.setCategoria(nuevasNuevasCategorias);
+				
 				if (!nuevasCategorias.containsKey(laCategoria.darNombre()))
 				{
 					Libro nuevo1 = new Libro(elTitulo, elAutor, laCalificacion, laCategoria);
@@ -204,6 +219,11 @@ public class Libreria
 		br.close();
 
 		return libros;
+	}
+	
+	public void setCategoria (Categoria[] categoria)
+	{
+		this.categorias = categoria;
 	}
 
 	/**
