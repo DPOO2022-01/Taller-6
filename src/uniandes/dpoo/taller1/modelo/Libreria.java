@@ -232,6 +232,10 @@ public class Libreria
 		}
 		return cambio;
 	}
+	//PARTE3
+	public void borrarLibros(String autores) {
+		
+	}
 	public void setCategoria (Categoria[] categoria)
 	{
 		this.categorias = categoria;
