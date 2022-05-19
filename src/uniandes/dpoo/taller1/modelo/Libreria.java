@@ -139,12 +139,10 @@ public class Libreria
 	private ArrayList<Libro> cargarCatalogo(String nombreArchivoLibros) throws IOException
 	{
 		ArrayList<Libro> libros = new ArrayList<Libro>();
-		
+
 		BufferedReader br = new BufferedReader(new FileReader(nombreArchivoLibros));
-		String linea = br.readLine(); // Ignorar la primera línea porque tiene los títulos:
+		String linea = br.readLine(); // Ignorar la primera lÃ­nea porque tiene los tÃ­tulos:
 										// Titulo,Autor,Calificacion,Categoria,Portada,Ancho,Alto
-		
-		
 
 		linea = br.readLine();
 		while (linea != null)
@@ -155,6 +153,76 @@ public class Libreria
 			double laCalificacion = Double.parseDouble(partes[2]);
 			String nombreCategoria = partes[3];
 			Categoria laCategoria = buscarCategoria(nombreCategoria);
+												//PARTE 1 modificado desde 
+			/*if (laCategoria==null){
+				boolean fic=false;
+				int pos=categorias.length;
+				pos--;
+				
+				if(nombreCategoria.equals("ficcion")) {fic=true;}  //ERROR, SE NECESITA .EQUALS
+				
+				laCategoria= new Categoria(nombreCategoria,fic);//crear instancia de Categoria
+				categorias[pos]=laCategoria;//agregar categoria  a lista de categorias de la libreria
+				String archivoPortada = partes[4];
+				int ancho = Integer.parseInt(partes[5]);
+				int alto = Integer.parseInt(partes[6]);
+				
+				// Crear un nuevo libro
+				Libro nuevo = new Libro(elTitulo, elAutor, laCalificacion, laCategoria);
+				laCategoria.agregarLibro(nuevo); //añadir libro a la lista que posee Categoria
+				libros.add(nuevo);
+														
+				// Si existe el archivo de la portada, ponÃ©rselo al libro
+				if (existeArchivo(archivoPortada))
+				{
+					Imagen portada = new Imagen(archivoPortada, ancho, alto);
+					nuevo.cambiarPortada(portada);
+				}
+				//FALTA IMPRIMIR DESDE LA INTERFAZ
+			}	
+			
+			else{
+				String archivoPortada = partes[4];
+				int ancho = Integer.parseInt(partes[5]);
+				int alto = Integer.parseInt(partes[6]);
+				
+				// Crear un nuevo libro
+				Libro nuevo = new Libro(elTitulo, elAutor, laCalificacion, laCategoria);
+				//laCategoria.agregarLibro(nuevo); //añadir libro a la lista que posee Categoria
+				libros.add(nuevo);
+														
+				// Si existe el archivo de la portada, ponÃ©rselo al libro
+				if (existeArchivo(archivoPortada))
+				{
+					Imagen portada = new Imagen(archivoPortada, ancho, alto);
+					nuevo.cambiarPortada(portada);
+				}		
+			}
+			linea = br.readLine();
+			//----------------------------------------------	*/	
+			String archivoPortada = partes[4];
+			int ancho = Integer.parseInt(partes[5]);
+			int alto = Integer.parseInt(partes[6]);
+			
+			// Crear un nuevo libro
+			Libro nuevo = new Libro(elTitulo, elAutor, laCalificacion, laCategoria);
+			//laCategoria.agregarLibro(nuevo); //añadir libro a la lista que posee Categoria
+			libros.add(nuevo);
+													
+			// Si existe el archivo de la portada, ponÃ©rselo al libro
+			if (existeArchivo(archivoPortada))
+			{
+				Imagen portada = new Imagen(archivoPortada, ancho, alto);
+				nuevo.cambiarPortada(portada);
+			}			
+			linea = br.readLine();
+		}
+
+		br.close();
+
+		return libros;
+	}
+/*
 			if (laCategoria == null)
 			{
 				laCategoria = new Categoria(nombreCategoria,false);
@@ -211,15 +279,7 @@ public class Libreria
 				}
 				
 			}
-			
-
-			linea = br.readLine();
-		}
-
-		br.close();
-
-		return libros;
-	}
+*/
 												//INICIO PARTE 2
 	public boolean modificarCategoria(Categoria categoria, String nombre) {
 		boolean cambio=false;
