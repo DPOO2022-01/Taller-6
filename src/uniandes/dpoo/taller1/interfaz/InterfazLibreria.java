@@ -180,7 +180,13 @@ public class InterfazLibreria extends JFrame
 		}
 
 	}
-
+	
+									//AÑADIDO PARTE3
+	public void borrarLibros() {
+		String msg="Ingrese el autor o autores separados por coma para borrar su contenido";
+		String autores= new JOptionPane().showInputDialog(msg);
+		libreria.borrarLibros(autores);
+	}
 	/**
 	 * Cambia la categoría para la cual se deben mostrar los libros en el panel
 	 * panelLibros
@@ -193,6 +199,7 @@ public class InterfazLibreria extends JFrame
 		panelLibros.actualizarLibros(libros);
 		mostrarLibro(libros.get(0));
 	}
+									//AÑADIDO PARTE2
 	public void cambiarNombreCategoria() {
 		String nombre = new JOptionPane().showInputDialog("Ingrese nuevo nombre de categoria: ");
 		Categoria categoria= this.panelCategorias.getSelected();
