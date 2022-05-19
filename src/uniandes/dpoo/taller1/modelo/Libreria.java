@@ -220,7 +220,18 @@ public class Libreria
 
 		return libros;
 	}
-	
+												//INICIO PARTE 2
+	public boolean modificarCategoria(Categoria categoria, String nombre) {
+		boolean cambio=false;
+		Categoria categoBuscar=buscarCategoria(categoria.darNombre());
+		if( categoBuscar!=null && (buscarCategoria(nombre)==null) ) {
+			//No existe "nombre" en la lista de categorias existentes y categoria existe
+			//modificar nombre de categoria actual
+			categoBuscar.setNombre(nombre);
+			cambio=true;
+		}
+		return cambio;
+	}
 	public void setCategoria (Categoria[] categoria)
 	{
 		this.categorias = categoria;
