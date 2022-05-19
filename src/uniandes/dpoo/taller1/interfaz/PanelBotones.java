@@ -39,9 +39,9 @@ public class PanelBotones extends JPanel implements ActionListener
 	private final static String CONTAR_SIN_PORTADA = "ContarSinPortada";
 
 	private final static String AUTOR_VARIAS_CATEGORIAS = "HayAutorEnVariasCategorias";
-	
+	/*
 	private final static String CARGAR_ARCHIVOS = "No hay archivos";
-	
+	*/
 	//AGREGADO POR LA PARTE 2
 	private final static String MODIFICAR_CATEGORIA = "ModificarCategoria";
 	//AGREGADO POR LA PARTE 3
@@ -79,7 +79,7 @@ public class PanelBotones extends JPanel implements ActionListener
 		agregarBoton(CONTAR_SIN_PORTADA, "Buscar libro con titulo", "./data/iconos/libro.png");
 		agregarBoton(CATEGORIA_MEJOR, "Buscar libro con titulo", "./data/iconos/premio.png");
 		agregarBoton(AUTOR_VARIAS_CATEGORIAS, "Buscar libro con titulo", "./data/iconos/autor.png");
-		agregarBoton(CARGAR_ARCHIVOS, "Cargar archivos", "./data/iconos/botonCargarArchivos.png");
+		/*agregarBoton(CARGAR_ARCHIVOS, "Cargar archivos", "./data/iconos/botonCargarArchivos.png");*/
 		//MODIFICADO POR PARTE 2
 		agregarBoton(MODIFICAR_CATEGORIA," Modificar nombre de categoria","./data/iconos/autor.png");
 		//PARTE 3
@@ -158,12 +158,13 @@ public class PanelBotones extends JPanel implements ActionListener
 		{
 			ventana.hayAutorEnVariasCategorias();
 		}
+		/*
 		else if (CARGAR_ARCHIVOS.equals(comando))
 		{
 			File archivo_categorias = new File("./data/categorias.csv");
 			File archivo_libros = new File("./data/libreria.csv");
 			ventana.cargarArchivos(archivo_categorias,archivo_libros);
-		}
+		}*/
 		else if(MODIFICAR_CATEGORIA.equals(comando)){
 			ventana.cambiarNombreCategoria();
 		}
