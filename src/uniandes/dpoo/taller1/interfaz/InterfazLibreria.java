@@ -185,7 +185,19 @@ public class InterfazLibreria extends JFrame
 	public void borrarLibros() {
 		String msg="Ingrese el autor o autores separados por coma para borrar su contenido";
 		String autores= new JOptionPane().showInputDialog(msg);
-		libreria.borrarLibros(autores);
+		//int borr=0;
+		boolean ret=false;
+		if(autores!=null) {
+			//borr=libreria.borrarLibros(autores);
+			ret=libreria.borrarLibros(autores);
+			//obtener categoria reciente y actualizarla
+			Categoria categoria= this.panelCategorias.getSelected();
+			this.cambiarCategoria(categoria);
+		}
+		//String msg1="Número de cambios"+borr;
+		//new JOptionPane().showMessageDialog(panelLibros, msg1);
+		new JOptionPane().showMessageDialog(panelLibros,ret);
+		
 	}
 	/**
 	 * Cambia la categoría para la cual se deben mostrar los libros en el panel
