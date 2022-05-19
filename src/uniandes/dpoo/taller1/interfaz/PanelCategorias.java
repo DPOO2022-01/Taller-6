@@ -71,6 +71,9 @@ public class PanelCategorias extends JPanel implements ItemListener
 			cbbCategorias.addItem(categoria);
 		}
 	}
+	public Categoria getSelected() {
+		return (Categoria) cbbCategorias.getSelectedItem();
+	}
 
 	// ************************************************************************
 	// Métodos implementados de la interfaz ItemListener
