@@ -73,6 +73,10 @@ public class Categoria
 	{
 		return libros;
 	}
+	//										//INICIO PARTE 2
+	public void setNombre(String name) {
+		this.nombre=name;
+	}
 
 	// ************************************************************************
 	// Otros métodos
