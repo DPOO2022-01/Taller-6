@@ -193,7 +193,21 @@ public class InterfazLibreria extends JFrame
 		panelLibros.actualizarLibros(libros);
 		mostrarLibro(libros.get(0));
 	}
-
+	public void cambiarNombreCategoria() {
+		String nombre = new JOptionPane().showInputDialog("Ingrese nuevo nombre de categoria: ");
+		Categoria categoria= this.panelCategorias.getSelected();
+		//confirmar que es la categoria seleccionada
+		//int name= new JOptionPane().showConfirmDialog(panelBotones, categoria.darNombre());//opcion "no" irrelevante
+		if(libreria.modificarCategoria(categoria, nombre)) {
+			//hubo reasignación del nombre de las categorias
+			panelCategorias.actualizarCategorias(libreria.darCategorias());
+		}
+		else {
+			//manejo del error que categoria con nombre existente
+			String msg="Ese nombre de categoria no es elegible, intente de nuevo";
+			new JOptionPane().showMessageDialog(panelCategorias, msg);
+		}
+	}
 	/**
 	 * Cambia el libro para el cual se debe mostrar la información en el panel
 	 * panelLibro
