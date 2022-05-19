@@ -233,28 +233,24 @@ public class Libreria
 		return cambio;
 	}
 	//PARTE3
-	public boolean borrarLibros(String autores) {
-		Categoria[] categos= this.categorias;
-		//int borrados=0;
-		boolean hallado=false;
+	public int borrarLibros(String autores) {
+		int borrados=0;
 		String[] listAutores=autores.split(",");
 		int size=listAutores.length;
 		for(int i=0;i<size;i++) {
-			//Hacer para cada autor
-			for(Categoria catego: categos) {
-				ArrayList<Libro> libros=catego.darLibros();
-				for(Libro lb: libros){
-					if(lb.darAutor().equals(listAutores[i])){
-						//borrar libro de la lista que la categoria específica
+			//hacer para cada autor
+			ArrayList<Libro>libross=this.buscarLibrosAutor(listAutores[i]);
+			for(Libro lb: libross) {
+				String cate=lb.darCategoria().darNombre();
+				for(Categoria catego: this.categorias) {
+					if(cate.equals(catego.darNombre())) {
 						catego.darLibros().remove(lb);
-						//borrados++;
-						hallado=true;
+						borrados++;
 					}
 				}
 			}
 		}
-		return hallado;
-		//return borrados;
+		return borrados;
 	}
 	public void setCategoria (Categoria[] categoria)
 	{
