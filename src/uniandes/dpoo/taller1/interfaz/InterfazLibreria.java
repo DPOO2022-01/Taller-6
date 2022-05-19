@@ -408,7 +408,11 @@ public class InterfazLibreria extends JFrame
 		// UIManager.setLookAndFeel( new FlatDarculaLaf());
 
 
-		InterfazLibreria interfaz = new InterfazLibreria();
+		InterfazLibreria interfaz= new InterfazLibreria();
+		
+		File archivo_categorias= new File("D:/Programación/Java_Eclipse/Taller6_Libreria/data/categorias.csv");
+		File archivo_libros= new File("D:/Programación/Java_Eclipse/Taller6_Libreria/data/libreria.csv");
+		interfaz.cargarArchivos(archivo_categorias,archivo_libros);
 		
 	}
 
